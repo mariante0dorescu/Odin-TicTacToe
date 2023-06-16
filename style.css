@@ -35,52 +35,54 @@ img{
   font-size: 5rem;
   font-size: 8rem;
   display: grid;
-  width: 200px;
+  /* width: 200px; */
+  transition: all .3s ease-out;
 }
 
 .tic, .tac, .toe, .cross {  
   color: white;
   text-align: center;
-  font-size: 24px;
-  padding: 10px;
+  /* font-size: 24px;
+  padding: 10px; */
   opacity: 0;
 }
 
 
 .t1{
-  animation: place 1s;
+  animation: place .5s;
   animation-fill-mode: forwards;
 }
 
 .t2{
-  animation: place 1s ;
-  animation-delay: 2s;
+  animation: place .5s ;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 
 
 .t3{
-  animation: place 1s;
-  animation-delay: 3s;
+  animation: place .5s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 .t4 {
-  animation: place 1s;
-  animation-delay: 4s;
+  animation: place .5s;
+  animation-delay: 2s;
   animation-fill-mode: forwards;
 }
 
 .t5 {
-  animation: place 1s;
-  animation-delay: 5s;
+  animation: place .5s;
+  animation-delay: 2.5s;
   animation-fill-mode: forwards;
 }
 
 .play-btn{
   opacity: 0;
-  width: 50%;
-  margin: 0 auto;
+  width: 70%;
+  margin: 5rem auto;
 }
+
 .cross{
   font-size: 120px;
 
@@ -99,7 +101,7 @@ img{
 } 
 
 .container{
-  visibility: hidden;
+  display: none;
   transform: scale(0);
   transition: all .5s ease-out;
   text-align: center;
@@ -109,8 +111,13 @@ img{
 }
 
 .active{
-  visibility: visible;
+  display: flex;
   transform: scale(1);
+}
+
+.hidden{
+  transform: scale(0);
+  display: none;
 }
 
 .game__header{
@@ -158,6 +165,11 @@ img{
   height: 100%;
   transition: all 0.2s ease-in-out;
 }
+.word{
+  fill: white;
+  height: 10rem;
+  margin: 0 auto;
+}
 
 .x{
   fill:  #ec7263;
@@ -198,8 +210,14 @@ img{
   cursor: pointer;
   padding: 1rem 2rem;
   font-family: inherit;
+  font-size: 2rem;
   background-color: #90f6d7;
   color: #41506b;
   border: none;
   border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #ec7263;
+  color: white;
 }

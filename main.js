@@ -1,9 +1,15 @@
 "use strict";
 const playerName = "";
 const playerPoints = 0;
+const playBtn = document.getElementById('playGame');
+
 
 const game = () => {
-
+  const container = document.querySelector('.container');
+  const intro = document.querySelector('.game__intro');
+  intro.classList.add("hidden");
+  container.classList.add("active");
+  
   let board = ["","","","","","","","",""];
   const winCombos = [[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8]];
   const playerOne = `<svg class="symbol x"><use href="#x"></use></svg>`;
@@ -117,4 +123,4 @@ const game = () => {
   play()
 }
 
-game();
+playBtn.addEventListener("click", game)
