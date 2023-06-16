@@ -36,7 +36,8 @@ img{
   font-size: 8rem;
   display: grid;
   /* width: 200px; */
-  transition: all .3s ease-out;
+  /* transition: all .3s ease; */
+  transition: all .3s cubic-bezier(.53,.32,.35,.95);
 }
 
 .tic, .tac, .toe, .cross {  
@@ -50,30 +51,31 @@ img{
 
 .t1{
   animation: place .5s;
+  animation-delay: 0s;
   animation-fill-mode: forwards;
 }
 
 .t2{
   animation: place .5s ;
-  animation-delay: 1s;
+  animation-delay: .5s;
   animation-fill-mode: forwards;
 }
 
 
 .t3{
   animation: place .5s;
-  animation-delay: 1.5s;
+  animation-delay: 1s;
   animation-fill-mode: forwards;
 }
 .t4 {
   animation: place .5s;
-  animation-delay: 2s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
 .t5 {
   animation: place .5s;
-  animation-delay: 2.5s;
+  animation-delay: 1.5s;
   animation-fill-mode: forwards;
 }
 
@@ -137,6 +139,7 @@ img{
 
 #board{
   background-color: #41506b ;
+
   margin: 2rem auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -148,7 +151,7 @@ img{
 
 .cell{
   aspect-ratio: 1/1;
-  border: 1px solid #35bcbf;
+  border: 2px solid #35bcbf;
   padding: 1rem;
   display: grid;
   place-items: center;
