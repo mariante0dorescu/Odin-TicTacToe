@@ -72,7 +72,8 @@ const game = () => {
     };
 
     for(const winPos of winCombos) {
-      if(board[winPos[0]] === player && board[winPos[1]] === player && board[winPos[2]] === player) {
+      // if(board[winPos[0]] === player && board[winPos[1]] === player && board[winPos[2]] === player) {
+      if (winPos.every(pos => board[pos] === player)) {
       gameOver = true;
 
       player === "x" ? showModal(`player wins the game`) : showModal(`computer wins the game`)

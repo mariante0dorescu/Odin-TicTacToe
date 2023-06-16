@@ -9,9 +9,16 @@
   <script src="main.js" defer></script>
 </head>
 <body>
+  <section class="game__intro">
+    <div class="tic t1">TIC</div>
+    <div class="tac t2">TAC</div>
+    <div class="toe t3">TOE</div>
+    <div class="cross t4">X</div>
+    <button class="btn play-btn t5" id="playGame">Play Game</button>
+  </section>
   <main class="container">
-    <section class="header"></section>
-    <section class="game">
+    <section class="game__header">lorem30</section>
+    <section class="game__board">
       <div id="board">
         <div class="cell" id="0"></div>
         <div class="cell" id="1"></div>
@@ -23,12 +30,12 @@
         <div class="cell" id="7"></div>
         <div class="cell" id="8"></div>
       </div>
-      <button id="reset">RESET</button>
+      <button class="btn" id="reset">RESET</button>
     </section>
-    <dialog id="modal">
-      <button class="btn" id="close__modal">OK</button>
-    </dialog>
   </main>
+  <dialog id="modal">
+    <button class="btn" id="close__modal">OK</button>
+  </dialog>
   <svg xmlns="http://www.w3.org/2000/svg">
     <defs>
       <symbol id="o" viewBox="0 0 141.73 141.73"><path class="st0" d="M127.66,70.86l-0.85,4.11L126,78.8l0.17,4.07l-0.43,4.1l-2.5,3.41l-2.11,3.46l-2.42,3.46l0.81,4.78l-4.21,1.94
