@@ -55,3 +55,21 @@ img{
 .o{
   fill: blue;
 }
+
+#modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  padding: 2rem;
+  text-align: center;
+}
+
+#modal > * {
+  margin: 0 0 0.5rem 0;
+}
+
+.modal__message{
+  font-size: 4rem;
+}

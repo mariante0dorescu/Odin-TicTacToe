@@ -1,17 +1,19 @@
 "use strict";
-
-// const playerName;
-
+const playerName = "";
+const playerPoints = 0;
 
 const game = () => {
+
   let board = ["","","","","","","","",""];
   const winCombos = [[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8]];
   const playerOne = `<svg class="symbol x"><use href="#x"></use></svg>`;
   const playerTwo = `<svg class="symbol o"><use href="#o"></use></svg>`;
   let isPlayerOTurn = false;
   let gameOver = false;
-  const cells = document.querySelectorAll('.cell')
+  const cells = document.querySelectorAll('.cell');
   const resetButton = document.getElementById('reset');
+  const modal = document.getElementById('modal');
+  const closeModal = document.getElementById('close__modal');
   
   // this function clear the cells and reset the game
   const resetGame = () => {
@@ -29,6 +31,20 @@ const game = () => {
   // event listener for reset button
   resetButton.addEventListener('click', resetGame);
 
+  // this function shows the modal with a custom message
+  const showModal = (message) => {
+    let div = document.createElement('div');
+    div.classList.add('modal__message');
+    div.innerText = message;
+    modal.insertAdjacentElement("afterbegin", div)
+    modal.showModal();
+
+    closeModal.addEventListener('click', () => {
+      div.innerText = "";
+      modal.close();
+      resetGame();
+    })
+  }
 
   // this functions alternates the inner html for the cell
   const currentPlayer = () => {
@@ -51,13 +67,16 @@ const game = () => {
   const checkWin = (player) => {
     if(checkDraw()){
       gameOver = true;
-      console.log('draw');
+      showModal('draw')
+      return;
     };
 
     for(const winPos of winCombos) {
       if(board[winPos[0]] === player && board[winPos[1]] === player && board[winPos[2]] === player) {
       gameOver = true;
-      console.log(player)
+
+      player === "x" ? showModal(`player wins the game`) : showModal(`computer wins the game`)
+      
       return;
       }
     }
