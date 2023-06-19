@@ -9,29 +9,53 @@
   <script src="main.js" defer></script>
 </head>
 <body>
-  <section class="game__intro">
-    <div class="tic t1"><svg class="symbol word"><use href="#tic"></use></svg></div>
-    <div class="tac t2"><svg class="symbol word"><use href="#tac"></use></svg></div>
-    <div class="toe t3"><svg class="symbol word"><use href="#toe"></use></svg></div>
-    <button class="btn play-btn t5" id="playGame">Play Game</button>
-  </section>
   <main class="container">
-    <section class="game__header"><svg class="symbol word"><use href="#title"></use></svg></section>
-    <section class="game__board">
-      <div id="board">
-        <div class="cell" id="0"></div>
-        <div class="cell" id="1"></div>
-        <div class="cell" id="2"></div>
-        <div class="cell" id="3"></div>
-        <div class="cell" id="4"></div>
-        <div class="cell" id="5"></div>
-        <div class="cell" id="6"></div>
-        <div class="cell" id="7"></div>
-        <div class="cell" id="8"></div>
+    <section class="game__section" id="intro">
+      <div class="game__intro">
+        <div class="tic t1"><svg class="symbol word"><use href="#tic"></use></svg></div>
+        <div class="tac t2"><svg class="symbol word"><use href="#tac"></use></svg></div>
+        <div class="toe t3"><svg class="symbol word"><use href="#toe"></use></svg></div>
+        <a href="#player__name" class="btn t5">Start</a>
       </div>
-      <button class="btn" id="reset">RESET</button>
+    </section>
+    <section class="game__section" id="player__name">
+      <form action="" id="player__form">
+       <div class="game__header"><h2>Enter your name, challanger...</h2></div>
+      <input type="text" id="playerName">
+      <input type="submit" id="playGame" value="Play" class="btn">
+     </form>
+    </section>
+    <section class="game__section" id="game">
+      <div class="game__container">
+        <div class="game__header"><svg class="symbol title"><use href="#title"></use></svg></div>
+        <div class="game__info">
+          <h2>Score</h2>
+        <div class="score__info">
+          <div><h2>Computer</h2></div>
+          <div><h2>0</h2></div>
+        </div>
+        <div class="score__info">
+          <div><h2>User</h2></div>
+          <div><h2>0</h2></div>
+        </div>
+      </div>
+      <div class="game__board">
+        <div id="board">
+          <div class="cell" id="0"></div>
+          <div class="cell" id="1"></div>
+          <div class="cell" id="2"></div>
+          <div class="cell" id="3"></div>
+          <div class="cell" id="4"></div>
+          <div class="cell" id="5"></div>
+          <div class="cell" id="6"></div>
+          <div class="cell" id="7"></div>
+          <div class="cell" id="8"></div>
+      </div>
+      <button class="btn visible" id="reset">RESET</button>
+    </div>
     </section>
   </main>
+   
   <dialog id="modal">
     <button class="btn" id="close__modal">OK</button>
   </dialog>
