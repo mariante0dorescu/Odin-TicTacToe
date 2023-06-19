@@ -9,7 +9,7 @@ let playerName = "";
 
 const setUserName = (e) => {
   e.preventDefault();
-  intro.parentNode.removeChild(intro);
+  // intro.parentNode.removeChild(intro);
 
   if(playerNameInput.value === "") return;
   else{
@@ -26,7 +26,10 @@ playerNameInput.addEventListener("input", setUserName)
 
 const game = () => {
   
+  intro.parentNode.removeChild(intro);
   playerScreen.parentNode.removeChild(playerScreen);
+
+
   const boardContainer = document.getElementById('board');
   const cells = document.querySelectorAll('.cell');
   const resetButton = document.getElementById('reset');
@@ -79,11 +82,11 @@ const game = () => {
 
 
   // this functions alternates the inner html for the cell
-  // const currentPlayer = () => {
-  //   const currentPlayer = isPlayerOTurn ? computerMarkMark : playerMark;
-  //   isPlayerOTurn = !isPlayerOTurn;
-  //   return currentPlayer;
-  // }
+  const currentPlayer = () => {
+    const currentPlayer = isPlayerOTurn ? computerMark  : playerMark;
+    isPlayerOTurn = !isPlayerOTurn;
+    return currentPlayer;
+  }
 
 
   //  shows the modal with a custom message
@@ -110,16 +113,28 @@ const game = () => {
     return !board.some((mark) => mark === "")
   }
 
-  // check if there is a win combination or draw
+//   // check if there is a win combination or draw
   const checkWin = (player) => {
     if(checkDraw()){
       gameOver = true;
       showModal('draw')
       return;
     };
+
+    for(const winPos of winCombos) {
+      // if(board[winPos[0]] === player && board[winPos[1]] === player && board[winPos[2]] === player) {
+      if (winPos.every(pos => board[pos] === player)) {
+      gameOver = true;
+
+      player === "x" ? showModal(`player wins the game`) : showModal(`computer wins the game`)
+      
+      return;
+      }
+    }
   }
 
   const randomComputerMove = () => {
+
     const emptySlot = [];
     for(let i = 0; i < board.length; i++) {
       if(board[i] === ""){
@@ -135,11 +150,13 @@ const game = () => {
     return -1;
   }
 
-  const computerMove = () => {
+  const computerMove = (player) => {
+    console.log(player)
+    checkWin(player);
     let index = randomComputerMove()
     board[index] = "o";
     let cell = document.getElementById(`${index}`);
-    cell.innerHTML = computerMark
+    cell.innerHTML = computerMark;
   }
 
 
@@ -151,7 +168,7 @@ const game = () => {
     const cell = e.target;
   
     //switch players to fill the board with moves
-   // let player = isPlayerOTurn ? console.log(computerMove()) : "x";
+   let player = isPlayerOTurn ? "o" : "x";
 
 
     
@@ -161,11 +178,11 @@ const game = () => {
       return;
     } else {
       if(checkSlot(cell.id)) {
-      cell.innerHTML = playerMark;
+      cell.innerHTML = currentPlayer();
       board[cell.id] = "x";
       } 
     }
-    console.log(computerMove())
+    computerMove(player);
     checkWin(player);
   }
 
