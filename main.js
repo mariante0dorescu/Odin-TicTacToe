@@ -1,45 +1,75 @@
 "use strict";
 const intro = document.querySelector('#intro');
-const playerScreen = document.querySelector('#player__name');
+const playerScreen = document.querySelector('#name');
 const gameContainer = document.querySelector('.game__container')
 const form = document.querySelector("#player__form");
-const playerName = document.getElementById("playerName");
-const playerPoints = 0;
+const playerNameInput = document.getElementById("playerNameInput");
 const playBtn = document.getElementById('playGame');
+let playerName = "";
 
 const setUserName = (e) => {
   e.preventDefault();
   intro.parentNode.removeChild(intro);
 
-  if(playerName.value === "") return;
+  if(playerNameInput.value === "") return;
   else{
-    playBtn.classList.add('t2');
+    playerName = playerNameInput.value;
+    playBtn.classList.add('t1');
     form.action = "#game";
+    
     playBtn.addEventListener("click", game);
     return;
   }
 }
 
-playerName.addEventListener("input", setUserName)
+playerNameInput.addEventListener("input", setUserName)
 
 const game = () => {
+  
   playerScreen.parentNode.removeChild(playerScreen);
 
-  const cells = document.querySelectorAll('.cell');
+    const cells = document.querySelectorAll('.cell');
   const resetButton = document.getElementById('reset');
   const modal = document.getElementById('modal');
   const closeModal = document.getElementById('close__modal');
+  const player = document.getElementById('playerName');
+  const playerScore = document.getElementById('playerScore');
+  const computerScore = document.getElementById('computerScore');
 
+  // make the container visible
   gameContainer.classList.add('active');
 
+  // game variables
+  const playerPoints = 0;
+  const computerPoints = 50;
   let board = ["","","","","","","","",""];
   const winCombos = [[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8],[0,1,2],[3,4,5],[6,7,8]];
-  const playerOne = `<svg class="symbol x"><use href="#x"></use></svg>`;
-  const computer = `<svg class="symbol o"><use href="#o"></use></svg>`
+  const playerMark = `<svg class="symbol x"><use href="#x"></use></svg>`;
+  const computerMark = `<svg class="symbol o"><use href="#o"></use></svg>`
   let isPlayerOTurn = false;
   let gameOver = false;
- 
 
+    // show player name and points / computer points
+    player.innerHTML = `<h2>${playerName}</h2>`
+    playerScore.innerHTML = `<h2>${playerPoints}</h2>`
+    computerScore.innerHTML = `<h2>${computerPoints}</h2>`
+  
+ 
+    // this function clear the cells and reset the game
+  const resetGame = () => {
+    gameOver = true;
+    // reset the player one as the first player
+    isPlayerOTurn = false
+    // reset the board
+    board = ["","","","","","","","",""];
+    // empty the grid
+    cells.forEach((cell) =>  cell.innerHTML = "");
+    // restart the game
+    gameOver = false;
+  }
+
+    // event listener for reset button
+  resetButton.addEventListener('click', resetGame);
 }
 
 

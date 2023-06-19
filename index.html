@@ -15,28 +15,28 @@
         <div class="tic t1"><svg class="symbol word"><use href="#tic"></use></svg></div>
         <div class="tac t2"><svg class="symbol word"><use href="#tac"></use></svg></div>
         <div class="toe t3"><svg class="symbol word"><use href="#toe"></use></svg></div>
-        <a href="#player__name" class="btn t5">Start</a>
+        <a href="#name" class="btn t5">Start</a>
       </div>
     </section>
-    <section class="game__section" id="player__name">
+    <section class="game__section" id="name">
       <form action="" id="player__form">
        <div class="game__header"><h2>Enter your name, challanger...</h2></div>
-      <input type="text" id="playerName">
+      <input type="text" id="playerNameInput">
       <input type="submit" id="playGame" value="Play" class="btn">
      </form>
     </section>
-    <section class="game__section" id="game">
+    <section class="game__section" id="playGame">
       <div class="game__container">
         <div class="game__header"><svg class="symbol title"><use href="#title"></use></svg></div>
         <div class="game__info">
           <h2>Score</h2>
         <div class="score__info">
           <div><h2>Computer</h2></div>
-          <div><h2>0</h2></div>
+          <div id="computerScore"></div>
         </div>
         <div class="score__info">
-          <div><h2>User</h2></div>
-          <div><h2>0</h2></div>
+          <div id="playerName"></div>
+          <div id="playerScore"></div>
         </div>
       </div>
       <div class="game__board">
