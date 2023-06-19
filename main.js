@@ -27,7 +27,7 @@ playerNameInput.addEventListener("input", setUserName)
 const game = () => {
   
   playerScreen.parentNode.removeChild(playerScreen);
-
+  const boardContainer = document.getElementById('board');
   const cells = document.querySelectorAll('.cell');
   const resetButton = document.getElementById('reset');
   const modal = document.getElementById('modal');
@@ -136,8 +136,10 @@ const game = () => {
   }
 
   const computerMove = () => {
-    board[randomComputerMove()] = "o";
-    console.log(cells.target)
+    let index = randomComputerMove()
+    board[index] = "o";
+    let cell = document.getElementById(`${index}`);
+    cell.innerHTML = computerMark
   }
 
 
